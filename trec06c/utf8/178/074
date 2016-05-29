@@ -1,0 +1,299 @@
+Received: from mta2.primary.ddc.dartmail.net (mta2.primary.ddc.dartmail.net [146.82.220.42])
+	by spam-gw.ccert.edu.cn (MIMEDefang) with ESMTP id j8MElhen008938
+	for <huang@ccert.edu.cn>; Sat, 24 Sep 2005 12:31:28 +0800 (CST)
+X-MID: <Kilauea157417-64896-169260815-1-1016@flonetwork.com>
+Date: Sat, 24 Sep 2005 13:42:43 +0900
+Message-Id: <Kilauea157417-64896-169260815-1-1016@flonetwork.com>
+From: "xie"<xie@edmchina.bea.com>
+Reply-To: "xie"<xie@bea.com>
+To: huang@ccert.edu.cn
+Subject: =?gb2312?B?tdoxN8baZGV2MmRldkB3b3Jrcw==?=
+MIME-Version: 1.0
+Content-Type: text/html; charset="GB2312"
+Content-Transfer-Encoding: 8bit
+
+
+   logo 
+   logo 
+   
+   动态   User   Group  技术文章  dev2dev  Live!  论坛集萃
+   论坛当前议题 下载 
+   亲爱的用户 WeiKe :
+
+   　　在这个秋高气爽的九月，在工作人员的辛勤努力之下，BEA
+   dev2dev新版终于上线了，有如秋日里清爽凉风，给人心旷神怡之感。
+
+   　　新的版本不仅在外观上沿袭dev2dev.bea.com的设计，秉承Think
+   Liquid的风格，更重要的是在将以往的内容重新做了梳理，使得资料的查阅和搜
+   索更加方便。此外，我们新增    论坛集萃栏目   ，从dev2dev.bea.com翻
+
+   　　“一个篱笆三个桩，一个好汉三个帮”，为了把我们的社区建设地更好，更
+   有活力，我们真诚地欢觗ev2dev的老朋友                          加盟
+   到dev2dev中国站社区管理层来，更大地发挥自己的力量！
+
+   BEA dev2dev中国网站
+   2005年9月22日
+   
+   隆重推出“dev2dev 与你共同珍藏的回忆”专题！
+   加盟
+   回顾过去，展望未来，dev2dev重装上阵，与程序员携手共创美好明天！
+     * BEA在开源领域再获新发展
+     * BEA dev2dev社区版主大招募！
+
+   User Group
+   
+       时间:2005年09月24日
+       地点:北京
+     * 工作流与WebLogic Integration
+       时间:2005年09月03日
+       地点:青岛
+
+     * 基于框架的J2EE应用架构设计和开发
+       时间:2005年09月03日
+       地点:天津
+     * 政府信息化与Open Source
+       时间:2005年08月27日
+       地点:杭州
+
+                                                 更多 User Group 活动
+
+   技术文章
+     使用数据服务进行数据集成 详细内容 
+     作者：Manu Madhusudhanan R 时间：2005-09-21
+
+   　　各种分布的信息源为负责通过集成和聚集这些源的数据而创建和维护应用程
+   序的架构师们带来了许多挑战。过去，开发人员必须用每种不同数据源可用的AP
+   I
+   编写自定义的代码。这样既增加了成本又不稳定，改变时需要修改自定义代码。
+
+     BEA AquaLogic Data Services Platform有什么新功能 详细内容 
+     作者：Lauren Cooney 时间：2005-09-21
+     　　本周早些时间，Lauren Cooney向Mike Carey和Sachin
+   Thatte咨询了有关BEA AquaLogic Data Services Platform (AL
+   DSP)的一些事情，她想知道该产品主要都有哪些新功能，以及为什么要重视它。
+   Mike是AquaLogic Data Services Platform的服务团队经
+     消除内存泄漏 详细内容 
+     作者：Staffan Larsen 时间：2005-09-21
+                            　　虽然Java虚拟机(JVM)及其垃圾收集器(garbage
+   collector，GC)负责管理大多数的内存任务，Java软件程序中还是有可能出现内
+   存泄漏。实际上，这在大型项目中是一个常见的问题。避免内存泄漏的第一步是
+   要弄清楚它是如何发生的。本文介绍了编写Java代码的一些常见的内存泄漏陷阱
+   ，以及编写不泄漏代码的一些最佳实践。一旦发生了内存泄漏，要指出造成泄漏
+   的代码是非常困难的。因此本文还介绍了一种新工具，用来诊断泄漏并指出根本
+     walmart.com如何迁移到Java 1.5 详细内容 
+     作者：Eugene Ciurana 时间：2005-09-20
+                　　如何将整个Internet上最忙碌的Web应用程序之一升级到Java
+   1.5呢？鉴于该应用程序每天必须处理700万个用户会话和1.06亿个页面访问量，
+   这是由于大好形势而产生的挑战。本文是关于将构成walmart.com
+   Web站点的应用程序及其子系统升级到Java 1.5的案例研究。
+     调整压力测试工具 详细内容 
+     作者：Kirk Pepperdine 时间：2005-09-20
+     　　您是否曾经
+   不得不对应用程序进行压力测试，而最后却发现不明白结果表明什么意义？也许
+   问题不是出在应用程序上。也许问题出在配置压力测试工具的方式上。如果您曾
+   揪历过这种情况，或者正要进行压力测试，您就需要考虑以下几个方面。
+     企业集成与 Web Services 和 BPEL 详细内容 
+     作者：Adam Kolawa,Ph.D 时间：2005-09-20
+
+   　　许多公司花费巨款并收集大量的数据以维护他们的遗留系统。因此，对于公
+   司来说，找到一个快速而高效的方式来保留和重复利用这些遗留系统而不是把它
+   们扔到一边是非常重要的。传统上，为提供跨各种不同应用程序和操作系统的通
+   信和集成，公司会求助于企业应用程序集成(EAI)。
+     访谈系列：轻量级 Java 详细内容 
+     作者：Jon Mountjoy 时间：2005-09-14
+     　　这篇Jim
+   Rivera的访谈主要论及利用轻量级Java和传统的J2EE方法构建应用之间的关系。
+
+     获得更大的投资回报 详细内容 
+     作者：Chris Haddad 时间：2005-09-14
+
+   　　我们正处在一个转折点上，各种新概念——如实时企业、随需应变和网络计
+   算——将提供不断增长的生产力、效率和收益机会。供应商们正努力把诸如联合
+
+     利用遗留资产 详细内容 
+     作者：Russell Gold 时间：2005-09-14
+
+   　　Java开发人员正迅速意识到用重构来修复已有代码中的架构问题的好处。正
+   确的重构要求进行快速单元测试就能验证该重构没有破坏已有的功能。然而，许
+   多人是在还没有进行过单元测试的系统上工作的，而且许多情况下那些系统并不
+   适合要进行的单元测试。
+     访问 Workshop 会话式WebServices 详细内容 
+     作者：David Maddison 时间：2005-08-26
+     　　BEA Workshop 为创建两类 WebService 提供了便利，这两类 WebService
+   是：无状态：两次方法调用之间不保存状态,会话式：WebServices
+   在两次方法调用间记录并保持状态。
+     您准备好运行IT Run Book了吗？ 详细内容 
+     作者：Raman Sud 时间：2005-08-26
+
+   　　任何一个开发人员或IT机构都可以证实：在跨WebLogic应用服务器构建应用
+   程序时，无瑕的应用程序开发并不一定能确保无瑕的部署。成功的部署要求IT基
+   础架构层中的应用程序配置正确，这样才能使应用程序正常运行。
+     Workshop 控件和扩展：第2部分
+   详细内容 
+     作者：Emmanuel Proulx 时间：2005-08-26
+       　　BEA   WebLogic  Workshop控件应该附有可靠的说明文档。在WebLogic
+   Workshop控件和扩展系列文章的第2部分，我们将讨论为了使控件可用，甚至被B
+   EA验证过程接受，需要采取的步骤。我们将向一个看起来很简单的控件添加Java
+   Doc、用户指南、属性描述、示例应用程序，以及把它合并到WebLogic
+   Workshop帮助系统所需的基础架构。
+     选择应用程序架构 详细内容 
+     作者：David Jonker 时间：2005-08-26
+
+   　　将软件应用集成到企业现有的IT环境的重要性和复杂性正逐步增长。企业的
+   信息系统（IS）部门及向企业出售解决方案的应用程序供应商都面临着架构解决
+   方案方面的艰巨任务，因为架构解决方案既要满足当前的需求，还要满足将来的
+   需求。
+     用J2EE集成ASP.NET 应用程序，第1部分 详细内容 
+     作者：Blair Taylor 时间：2005-08-17
+            　　我们都知道，为构建健壮的        Web        应用程序，.NET
+   平台提供了一组非常好的工具。然而，作为.NET开发人员，我们需要懂得如何才
+   能把          .NET          的优良特性同其他平台和技术集成起来。我们经
+   常发现客户将.NET和J2EE 技术在他们的架构中应用得都非常成功。
+
+     从WebLogic Server 5.1到8.1的迁移策略 详细内容 
+     作者：Manjunath Ganimasty 时间：2005-08-17
+       　　2004年2月1日BEA收回了WebLogic  Server  5.1。在收回之前，它已经
+   支撑了四年。迁移运行在WebLogic Server
+   5.1上的应用程序的一个选择是使用8.1，后者提供了大量针对基于J2EE
+   1.3的应用程序的新功能。
+     展望面向服务领域 详细内容 
+     作者：Thomas Erl 时间：2005-08-17
+      　　最近，BEA  宣布该公司将拓宽其在  SOA 方面的咨询实践，而且它已经
+   开发了一个工具，其他公司可以使用该工具来学习
+   SOA，并弄清他们在向新架构模型的转换上准备得怎么样了。
+     WebLogic Server中的计划任务 详细内容 
+     作者：Thomas Kunnumpurath,Vijay Chinta 时间：2005-08-17
+
+   　　运行计划任务的需求不断增加，而且在所有J2EE应用程序中日益普及。当前
+   J2EE规范无法提供一种轻松的方式来计划企业应用程序内部的任务。
+     Web 应用程序出什么问题了？ 详细内容 
+     作者：Channing Benson 时间：2005-08-17
+     　　批评像 World Wide Web
+   这种取得非凡成功的事物似乎有点偏激，可能也不受欢印：廖抟晌剩琓im
+   Berners-Lee
+   简单而优美的发明促成了计算机使用方式和使用群体史无前例的革命。
+     在J2EE中使用 Work Manager 规范执行并行任务 详细内容 
+     作者：Dmitri Maximovich 时间：2005-08-08
+            　　到目前为止，人们还没有发现一种途径可以方便地在       J2EE
+   应用程序中启动执行并行任务。设想您的应用程序需要处理多个客户端请求（不
+   管是在 servlet 中还是在 session bean
+   中），而如果这些请求以并行的方式执行，其效率可能更高。作为一个简单例子
+   ，我们假设这样一种情况，即客户请求可以通过从多个   URL、web服务或  SQL
+   查询语句获得数据而得到处理，并且执行顺序不重要。这些用例非常需要以并行
+   的方式执行；它们花费绝大部分时间来等待响应，因此它们占用的处理能力并不
+   多。除此之外，因为有很多已经
+   实现了，因此强健的并发设计是可扩展软件的重要组成部分。
+     集群应用程序的会话管理 详细内容 
+     作者：Jon Purdy 时间：2005-08-08
+     　　集群应用程序要求可靠的、高效的 HTTP
+   会话管理。不幸的是，向集群环境的转移向会话管理引入了诸多挑战。这篇文章
+   讨论那些挑战，并提出一些解决方案和推荐的实践。这里，我们研究的内容包括
+   BEA Weblogic Server 和 Tangosol Coherence*Web 的会话管理特征。
+     JMS集群第1部分 详细内容 
+     作者：Raffi Basmajian 时间：2005-08-08
+
+   　　本文是关于JMS集群的由两部分组成的系列文章中的第1部分。在这一部分中
+   腏MS架构。
+     用WLST监控WebLogic服务器 详细内容 
+     作者：Ignacio Coloma 时间：2005-08-08
+     　　脚本语言近来受到一些关注。随着Groovy和
+   Jython的到来，编写与Java合并的脚本比Ant更简单自然。一直以来使用XML来调
+   用Java方法都是被迫的，这主要是因为在标记语言中解释流、条件表达式和自定
+   义代码比较困难（虽然自Ant 1.5之后这一点有了较大的改进）。
+     从WebLogic 6.1迁移到 WebLogic 8.1 详细内容 
+     作者：GVB Subrahmanyam 时间：2005-08-08
+     　　
+
+   BEA         的名字与应用服务器是同义词。北美几乎所有运行在        Unix
+   操作系统上的应用程序都运行在         Bea        Weblogic        Server
+   平台上，特别是那些金融方面的应用。当前稳定的        WebLogic       8.1
+   版本要比较早的版本功能更多。向新版本迁移从来都具有挑战性和冒险性，但是
+   这样做可以提高效率和增加新的功能，也有助于继续使用当前供应商的产品和支
+   持。
+
+                                                             更多内容
+
+   dev2dev Live!
+
+   网上技术交流会（Webinar服务）：Java虚拟机对方面编织的支持
+   Joakim Dahlsted 和 Jonas Bonér
+   Java Virtual Machine Support for Aspect Weaving：Joakim
+   Dahlstedt和Jonas Bonér讨论了对JRockit
+   JVM进行扩展、使它支持方面编织的想法。
+
+
+   网上技术交流会（Webinar服务）：SOA和门户联邦
+   Alex Toussaint
+   SOA and Portal Federation：Alex Toussaint，WebLogic Portal产品经
+   理。他介绍了门户联邦如何与面向服务架构的方法互补以构建软件基础架构。Al
+   ex还介绍了典型的客户联邦场景、实现和部署策略，以及新出现的联邦和门户方
+   向。
+
+                                                             更多内容
+
+
+   论坛集粹
+
+
+
+   WebLogic JDBC & Transaction版精华帖整理
+   作者：崔飞飞 时间：2005-09-09
+   关于WebLogic
+   JDBC的基本配置知识，连接池使用，事务处理，以及常见问题的解答。
+   配置WebLogic 8.1和Hibernate 3.0，第二部分
+   作者：Prakash Malani 时间：2005-07-29
+   我的前一篇文章描述了在WebLogic 8.1上配置Hibernate
+   3.0的具体步骤。文章引起了巨大的反响。在本文中，我将介绍高级配置，其中H
+   ibernate使用了WebLogic的Java命名和目录接口(Java Naming and Directory
+   Interface，JNDI)、Java事务API (Java Transaction
+   API，JTA)、Java连接器架构(Java Connector
+   Architecture，JCA)和Java管理扩展(Java Management extension，JMX)实现。
+   BEA dev2dev WebLogic管理精华
+   作者：sdj21 时间：2005-09-09
+   关于WebLogic Server管理、监控、调优、集群等方面的综合。
+   Portal精华帖整理（一）：名词解释
+   作者：王超 时间：2005-06-01
+   有关Portal的常见名词解释。
+   下面是在 WebLogic 8.1 上配置 Hibernate 的具体步骤
+   作者：Prakash Malani 时间：2005-07-21
+   最近，在 bartsandbox 上，有人问我在 WebLogic 上配置 Hibernate
+   的具体步骤。您可能知道， Hibernate 是一个非常流行的开源对象关系映射
+   (Object Relational Mapping ， ORM) 工具。下面是在 WebLogic 8.1 上配置
+   Hibernate 的具体步骤：
+
+                                                            更多集粹
+
+
+                                
+       总算可以上来了！改版后整个网站给人感觉眼前一亮啊！不错！
+                              论坛工作室
+              tuxedo双节点问题！   Tuxedo
+        再次请都tmboot -y 出现no bbl available的问题
+                                Tuxedo
+                             WebLogic管理
+        weblogic 的类装载机制祥解   WebLogic管理
+          怎么样清除启动密码！   WebLogic管理
+      [求助]如何将自建的安全用户和Portal用户联系起来？
+                          BEA WebLogic Portal
+                      关于将BEA Portal
+     中的PointBase数据库迁移到Oracle中的方法   BEA WebLogic Portal
+      今天看了一下aqualogic,感觉是和integration 有重合.
+                       BEA WebLogic Integration
+     请教：Web项目部署问题   BEA WebLogic Workshop
+    Weblogic的ClassLoader体系结构   Web Application
+                                Development
+      请教如何实现java环境下前端业务数据项的实时校验？
+                      Web Application Development
+      RMI优化方案-与大家共同商讨   EJB Development
+                                
+     求助:WEBLOGIC上不能运行JAVABEAN(请大家帮我看看哪不对)在线等待
+                            EJB Development
+                                
+      推荐一下常用的Eclipse插件吧   Develop Tools
+            weblogic9新体验   Develop Tools
+          Java版模式速查手册   Design Pattern
+            第一次沙龙感觉   天津 User Group
+                                
+
+
+

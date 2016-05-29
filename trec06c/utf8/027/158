@@ -1,0 +1,121 @@
+Received: from 61.150.12.6 ([61.150.12.6])
+	by spam-gw.ccert.edu.cn (MIMEDefang) with ESMTP id j7IHoX5Q011627; Mon, 22 Aug 2005 21:00:23 +0800 (CST)
+Received: from znwi75.homeway.com.cn (znwi75.homeway.com.cn [74.50.8.16]) by  with SMTP id 4A4B70A55;
+	Mon, 22 Aug 2005 11:12:05 -0200
+Message-ID: <LbFUmqVhfXOo@homeway.com.cn>
+From: "zhang" <zhang@homeway.com.cn>
+Reply-To: "zhang" <zhang@homeway.com.cn>
+To: qian@ccert.edu.cn
+X-Mailer: food stamp 52 necromancers
+Subject: =?gb2312?B?vqvA7be9tcTQ6Mfzt9bO9sjrw8W9zLLELg==?=
+Date: Mon, 22 Aug 2005 12:08:05 -0100
+MIME-Version: 1.0
+Organization: food stamp 52 necromancers
+Content-Type: multipart/alternative;
+	boundary="=====84143290425060=_"
+
+
+   quadrupole thine issuant stupendous bracken fought crawlspace registry
+   rosemary  successor  siva  comprehensible detente prostitute integrity
+   colosseum passionate
+
+                            Ginfab的需求分析理论
+
+                                                            更多的文章
+
+
+   软件的开发步骤从工程上来分的话，一般可分成：需求收集，需求分析设计，系
+
+   若从角色上来看的话，有使用者，领域专家，系统分析员，系统设计员，编程人
+                          员，测试人员，客服人员。
+
+         若用构成软件的性质的来看的话，可以分成表现层(Presentation
+            Model)，运作层(Control Model)，数据层(Data Model)。
+
+   从企业的行为来看的话，企业组织的运作是由一个个的部门之间操作着不同的文
+                   件而组成，有人叫做这些为许多的Business
+   Process(BP)，有人说是一堆的文件在Working Flow中流动来构成企业的活动。
+
+        所以从软件的设计方向来看，可以分成两种，一是Design for Work
+                        Flow式的应用，一是Design for
+   Data式的应用；前者是比较新的方向，后者是行之多年的应用思想，因此早就有
+     管理Data的应用工具，其中被用得最多的，我们叫他Relational Database
+                                 Management
+                         Data，有些人叫它作2-tier。
+
+   如前所述，企业的活动主要是由位于不同组织内的不同的人，透过不同的操作方
+   法处理着各式的文件，如挂号单、就诊单、领药。所以要计算机化的话，我们会
+                      提供简易方便的接口(Presentation
+   Model)让使用者操作文件(Document)，最后提供一个储存的地方来放数据(Data)
+                  data，而存在数据库内的叫physical data。
+
+   但是综合上述来看，一个软件的成功因素，一看好不好用，二看操作的文件内含
+   是否足够，三就是可不可以多收到一点费用，其它的就都是工程上的问题了。最
+            后dw把他综合成，只要Presentation Model够好，Document
+   model正不正确，等等都必须先满足前述理由，换句话说要先满足是客户因素的W
+                                 hat部份。
+
+   西安人士一般在IT技术领域内都不太有问题，除非他自己本身对于工具还不太会
+   用，目前磨合的结果，表现在日志当中的问题，综合起来看大概只有几件事情，
+   騇SN的沟通来加以补足的，可是真的沟通之后就没有问题了吗？其实不然，若沟
+                     通不从presentation model和document
+
+                        磨合过程中，对于presentation
+        model来看问题不大，一般都于事先注意到(编码前)，然而document
+   model上就会疏忽，未能于事先先作需求确认，为何dw要如此说呢？其实这两个m
+              odel是可以互相勾稽补助的工具，甚至可以说document
+      鹊奈侍舛伎梢栽赿ocument model当中找到，而且可以在编程之前确定。
+
+   还有一个最常遇到的问题就是，因为我对这个应用系统该如何操作不清楚，所以
+   常会理解错误，但是dw不太认同这一个说法，因为操作不要看成只是在页面上操
+   九成的问题与九成的操作问题都可以事先得到答案，更可以自行设计出更好操作
+                                 模式出来。
+
+         除了presentation model和document model以外还有一个Control
+
+    从Model本身来看，又可以分成动态的(UML State chart)与静态的(UML Class
+   Diagram)两种，当然我的建议是先静后动，因为静态的关系比较稳定，而动态的
+   关系比较与客户的关心有关，这类的事就不是软件人员可以控制的，我的建议是
+            最好承认它变化性的存在。静态关系之下依顺序是Entity,
+                   Relationship(Direction, Multiplicity,
+
+   最后提到与西安的分工模式，让我们从软件的开发步骤来看，依序为需求陈述，
+   需求分析，系统分析，系统设计，编码，测试。基本上愈往右段走会愈细，也可
+   以说需要沟通的地方会更多，更可以说会意见愈分岐的地方也愈多，如为什么不
+    用inheritance，为什么要用wrapper，为什么不用array，为什么不用string
+   grid?其实这些争论点都不太重要，重要的应该在于是否能符合前述的document
+    model?我们根本不需要针对这些细节沟通，因为不沟通反而才是最好的沟通。
+
+   如果老板说：希望外包能给的钱愈多愈好；如果工程师说：文件能写的愈细愈好
+                                  (Coding
+   Spec.)；各位看官觉得这是可能的发展吗？基本上这是矛盾的，应该是在这一个
+   开发顺序当中「需求陈述，需求分析，系统分析，系统设计，编码，测试」，西
+   安这里的能力要由右段(工匠)承接工作到左段(设计)，那费用的部份才会愈来愈
+   高，最后希望台北这里只剩下需求陈述与确认而已。忘了，还要出钱，而且愈出
+                                   愈多。
+
+
+               有人认为让大陆的工程师编码就好了，所以把Coding
+   Spec都开好开细，让编程的人员像生产线上的机器就可以了，DW认为做不到这一
+   件事，因为人不是机器，即使要这样做也必须由当地人来开设计文件，就像当初
+   浩雷做的一样；另一方面来说，这样下去，会限制了人们的思想，好的设计再也
+   出不来了；印度的开发模式，就是一个生产线的方式，但另外有一种是Linux的O
+                                    pen
+
+   最后再一次的强调，确认的顺序很重要，不要一下子太细了。不要以为你懂了，
+       用另一个model检查一下，看还有没有问题，尤其是矛盾的问题，Late
+      Design是大师们的建议，不要因为工作赶，而作错，最后也没有效果的。
+
+      祝各位能看到这里的人们，百尺竿头，更进一步。倒吃甘蔗，愈来愈甜。
+
+
+                                
+
+   | 代您发这样的广告信| 两岸合作充电区 | 隐私声明 | 联络我们
+                               | 取消订阅
+
+         IFRAME: http://www.ginifab.com.cn/countg/count.php?id=5
+
+
+
+

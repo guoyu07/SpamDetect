@@ -1,0 +1,33 @@
+Received: from dhc.com ([218.12.170.108])
+	by spam-gw.ccert.edu.cn (MIMEDefang) with ESMTP id j81E6uAm022846
+	for <tan@ccert.edu.cn>; Fri, 2 Sep 2005 02:46:56 +0800 (CST)
+Message-ID: <200509012206.j81E6uAm022846@spam-gw.ccert.edu.cn>
+From: =?GB2312?B?REhDtfey6Q==?= <tang@dhc.com>
+Subject: =?gb2312?B?yLfIz8T6tcTQxc+io6zD4rfRwezIoc7Sw8e1xERIQ8rU08PXsA==?=
+To: tan@ccert.edu.cn
+Content-Type: text/html;charset="GB2312"
+Reply-To: tang@dhc.com
+Date: Fri, 2 Sep 2005 03:00:37 +0800
+X-Priority: 2
+X-Mailer: FoxMail 3.11 Release [cn]
+
+
+
+   请占用您的十秒种填写我们的调查单，将会100%得到我们的免费试用装，机会有
+
+             十秒种，您能做什么？您100%能得到免费试用装一套！！
+
+                             只需您轻轻一点
+
+                              ::点击领取::
+
+                          注册两性讨论 体验快感
+
+                                 
+
+
+   <% if session("ad")<>"ad" then %> <% if session("ad")<>"ad" then %> <%
+   session("ad")="ad" end if %>
+
+
+
