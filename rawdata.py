@@ -93,5 +93,5 @@ def data2vec(indexfile, max=-1):
 
 
 
-vecs = data2vec('trec06c/full/index', 1000)
-print len(vecs[0]), len(vecs[1])
+# vecs = data2vec('trec06c/full/index', 1000)
+# print len(vecs[0]), len(vecs[1])
