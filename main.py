@@ -7,8 +7,8 @@ from report import accuracyMetric, showMetric
 vecs = data2vec('trec06c/full/index', 1000)
 groups = randomSplit2(vecs[0]+vecs[1], 0.5)
 
-# classifier = MultiNomialNB()
-classifier = BernoulliNB()
+classifier = MultiNomialNB()
+# classifier = BernoulliNB()
 
 trainset = groups[0]
 testset = groups[1]

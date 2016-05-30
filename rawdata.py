@@ -2,6 +2,7 @@
 
 import jieba
 import os
+from features import *
 
 jieba.enable_parallel()
 
@@ -59,7 +60,11 @@ def email2dict(filename):
                       .replace('？', '？' + os.linesep))
     wordcnt = {}
     for word in words:
-        word = word.encode('utf-8')
+
+        if useless_word(word):
+            print word.encode('utf-8')
+            continue
+
         if word in wordcnt:
             wordcnt[word] = wordcnt[word] + 1
         else:
@@ -92,6 +97,6 @@ def data2vec(indexfile, max=-1):
     return vectors
 
 
-
 # vecs = data2vec('trec06c/full/index', 1000)
 # print len(vecs[0]), len(vecs[1])
+# email2dict('trec06c/utf8/000/000')

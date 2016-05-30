@@ -41,6 +41,7 @@ class MultiNomialNB():
             tmp = self._PofTerm(word, 1)
             if tmp > 0:
                 positive += log(tmp) * vector[word]
+                # positive += log(tmp)
                 # positive *= tmp
 
         negative = log(self._PofC(0))
@@ -49,6 +50,7 @@ class MultiNomialNB():
             tmp = self._PofTerm(word, 0)
             if tmp > 0:
                 negative += log(tmp) * vector[word]
+                # negative += log(tmp)
                 # negative *= tmp
         # print 'positive:%f negative:%f' % (positive, negative)
         return 1 if positive > negative else 0
@@ -124,3 +126,5 @@ class BernoulliNB():
 # print classifier.DocCnt
 # print classifier.WordCnt
 # print classifier.predict([{'a', 1}])
+
+
