@@ -38,3 +38,4 @@ def showMetric(metric):
     print '    recall', recall, '  '
     print '    F1-measure', 2.0 * precision * recall / (precision + recall), '  '
     print '    G-mean', sqrt(recall * TN / (TN + FP)), '  '
+    print

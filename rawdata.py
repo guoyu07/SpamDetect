@@ -3,6 +3,7 @@
 import jieba
 import os
 from features import *
+import re
 
 jieba.enable_parallel()
 
@@ -49,6 +50,26 @@ def readEmail(filename):
     return info
 
 
+
+def email_special_token(info):
+    special = {}
+
+    url = '[a-zA-z]+://[\w\d/\.]*'
+    urlnum = len(re.findall(url, info))
+    special['http://'] = urlnum
+
+    phone = '\d{3}-\d{8}|\d{4}-\d{7}|0?1\d{10}\D'
+    # print re.findall(phone, info)
+    phonenum = len(re.findall(phone, info))
+    special['xxx-xxxx-xxxx'] = phonenum
+
+    email = '[\w-]*@[\w-]*.[\w-]*'
+    # print re.findall(email, info)
+    emailnum = len(re.findall(email, info))
+    special['xxx@xxx.xxx'] = emailnum
+    return special
+
+
 def email2dict(filename):
     info = readEmail(filename)
     words = jieba.cut(''.join(info[1])
@@ -62,13 +83,17 @@ def email2dict(filename):
     for word in words:
 
         if useless_word(word):
-            print word.encode('utf-8')
+            # print word.encode('utf-8')
             continue
 
         if word in wordcnt:
             wordcnt[word] = wordcnt[word] + 1
         else:
             wordcnt[word] = 1
+
+    specialToken = email_special_token(''.join(info[1]))
+    for special in specialToken:
+        wordcnt[special] = specialToken[special]
     return wordcnt
 
 
@@ -99,4 +124,4 @@ def data2vec(indexfile, max=-1):
 
 # vecs = data2vec('trec06c/full/index', 1000)
 # print len(vecs[0]), len(vecs[1])
-# email2dict('trec06c/utf8/000/000')
+email2dict('trec06c/utf8/000/007')

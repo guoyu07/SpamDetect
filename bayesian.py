@@ -1,16 +1,18 @@
 # coding=utf-8
 from math import log
+from features import DefaultFeature
 
 
 class MultiNomialNB():
     WordCnt = [{}, {}, {}]
     NumCnt = [0, 0, 0]
+    Features = set([])
 
     def __int__(self):
         self.WordCnt = [{}, {}, {}]
         self.NumCnt = [0, 0, 0]
 
-    def train(self, trainset):
+    def train(self, trainset, featureExtractor=DefaultFeature()):
         for sample in trainset:
             positive = sample[0]
             vector = sample[1]
@@ -22,11 +24,13 @@ class MultiNomialNB():
                     if word in self.WordCnt[2] else vector[word]
                 self.NumCnt[positive] += vector[word]
                 self.NumCnt[2] += vector[word]
+        self.Features = set(self.WordCnt[2].keys())
+        self.Features = featureExtractor.extract_features(self)
 
-    def _PofC(self, positive):
+    def PofC(self, positive):
         return 1.0 * self.NumCnt[positive] / self.NumCnt[2]
 
-    def _PofTerm(self, word, positive):
+    def PofTermC(self, word, positive):
         if word in self.WordCnt[positive]:
             return 1.0 * (self.WordCnt[positive][word] + 1) / \
                 (self.NumCnt[positive] + len(self.WordCnt[2]))
@@ -34,24 +38,36 @@ class MultiNomialNB():
             return 1.0 / (self.NumCnt[positive] + len(self.WordCnt[2]))
         return -1
 
+    def PofTerm(self, word):
+        if word in self.WordCnt[2]:
+            return 1.0 * (self.WordCnt[2][word] + 1) / \
+                (self.NumCnt[2] + len(self.WordCnt[2]))
+        return -1
+
+    def PofCTerm(self, word, positive):
+        return self.PofC(positive) * self.PofTermC(word, positive) \
+            / self.PofTerm(word)
+
     def _predict(self, vector):
-        positive = log(self._PofC(1))
-        # positive = self._PofC(1)
-        for word in vector:
-            tmp = self._PofTerm(word, 1)
+        positive = log(self.PofC(1))
+        # positive = self.PofC(1)
+        negative = log(self.PofC(0))
+        # negative = self.PofC(0)
+        for word in self.Features:
+            if word not in vector:
+                continue
+            tmp = self.PofTermC(word, 1)
             if tmp > 0:
                 positive += log(tmp) * vector[word]
                 # positive += log(tmp)
                 # positive *= tmp
 
-        negative = log(self._PofC(0))
-        # negative = self._PofC(0)
-        for word in vector:
-            tmp = self._PofTerm(word, 0)
+            tmp = self.PofTermC(word, 0)
             if tmp > 0:
                 negative += log(tmp) * vector[word]
                 # negative += log(tmp)
                 # negative *= tmp
+
         # print 'positive:%f negative:%f' % (positive, negative)
         return 1 if positive > negative else 0
 
@@ -65,12 +81,13 @@ class MultiNomialNB():
 class BernoulliNB():
     WordCnt = {}
     DocCnt = [0, 0, 0]
+    Features = set([])
 
     def __int__(self):
         self.WordCnt = {}
         self.DocCnt = [0, 0, 0]
 
-    def train(self, trainset):
+    def train(self, trainset, featureExtractor=DefaultFeature()):
         for sample in trainset:
             positive = sample[0]
             vector = sample[1]
@@ -81,31 +98,53 @@ class BernoulliNB():
                 self.WordCnt[word][2].append(vector[word])
                 self.DocCnt[positive] += 1
                 self.DocCnt[2] += 1
+        self.Features = set(self.WordCnt.keys())
+        self.Features = featureExtractor.extract_features(self)
 
-    def _PofC(self, positive):
+    def PofC(self, positive):
         return 1.0 * self.DocCnt[positive] / self.DocCnt[2]
 
-    def _PofTerm(self, word, positive):
+    def PofTermC(self, word, positive):
         if word in self.WordCnt:
             return 1.0 * (len(self.WordCnt[word][positive]) + 1) / (self.DocCnt[positive] + 2)
         return -1
 
-    def _predict(self, vector):
-        positive = log(self._PofC(1))
-        # positive = self._PofC(1)
-        for word in vector:
-            tmp = self._PofTerm(word, 1)
-            if tmp > 0:
-                positive += log(tmp)
-                # positive *= tmp
+    def PofTerm(self, word):
+        if word in self.WordCnt:
+            return 1.0 * (len(self.WordCnt[word][2]) + 1) / (self.DocCnt[2] + 2)
+        return -1
 
-        negative = log(self._PofC(0))
-        # negative = self._PofC(0)
-        for word in vector:
-            tmp = self._PofTerm(word, 0)
-            if tmp > 0:
-                negative += log(tmp)
-                # negative *= tmp
+    def PofCTerm(self, word, positive):
+        return self.PofC(positive) * self.PofTermC(word, positive) \
+            / self.PofTerm(word)
+
+    def _predict(self, vector):
+        positive = log(self.PofC(1))
+        # positive = self.PofC(1)
+        negative = log(self.PofC(0))
+        # negative = self.PofC(0)
+        for word in self.Features:
+            if word not in vector:
+                tmp = self.PofTermC(word, 1)
+                if tmp > 0:
+                    positive += log(1 - tmp)
+                    # positive *= tmp
+
+                tmp = self.PofTermC(word, 0)
+                if tmp > 0:
+                    negative += log(1 - tmp)
+                    # negative *= tmp
+            else:
+                tmp = self.PofTermC(word, 1)
+                if tmp > 0:
+                    positive += log(tmp)
+                    # positive *= tmp
+
+                tmp = self.PofTermC(word, 0)
+                if tmp > 0:
+                    negative += log(tmp)
+                    # negative *= tmp
+
         # print 'positive:%f negative:%f' % (positive, negative)
         return 1 if positive > negative else 0
 
@@ -126,5 +165,3 @@ class BernoulliNB():
 # print classifier.DocCnt
 # print classifier.WordCnt
 # print classifier.predict([{'a', 1}])
-
-
