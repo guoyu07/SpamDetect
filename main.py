@@ -13,7 +13,15 @@ groups = randomSplit2(vecs[0]+vecs[1], 0.5)
 
 trainset = groups[0]
 testset = groups[1]
-FeaturenNum = 50
+FeaturenNum = 10
+
+
+classifier = BernoulliNB()
+classifier.train(trainset, SpecialExtractor(FeaturenNum))
+predicted = classifier.predict([sample[1] for sample in testset])
+expected = [sample[0] for sample in testset]
+showMetric(accuracyMetric(expected, predicted))
+
 
 starttime = time.time()
 

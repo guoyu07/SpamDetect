@@ -194,7 +194,22 @@ class MyExtractor(DefaultFeature):
         items = MI.items()
         items = sorted(items, lambda x, y: cmp(x[1], y[1]), reverse=True)
         ans = [item[0] for item in items[0:self.FeaturenNum]]
-        # for word in ans:
-        #     print word
-        # print
+        for word in ans:
+            print word
+        print
+        return ans
+
+
+class SpecialExtractor(DefaultFeature):
+    FeaturenNum = -1
+
+    def __init__(self, num=-1):
+        self.FeaturenNum = num
+
+    def extract_features(self, NB):
+        ans = ['http://', 'xxx-xxxx-xxxx', 'xxx@xxx.xxx', u'说']
+        MI = {}
+        for word in ans:
+            MI[word] = abs(NB.PofTermC(word, 1) - NB.PofTermC(word, 0))
+            print word, MI[word], NB.PofTermC(word, 1), NB.PofTermC(word, 0)
         return ans
