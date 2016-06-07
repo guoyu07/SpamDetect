@@ -4,6 +4,7 @@ import jieba
 import os
 from features import *
 import re
+from matplotlib import pyplot as plt
 
 jieba.enable_parallel()
 
@@ -60,7 +61,7 @@ def email_special_token(info):
         special['http://'] = urlnum
 
     phone = '\d{3}-\d{8}|\d{4}-\d{7}|0?1\d{10}\D|\D\d{8}\D'
-    print re.findall(phone, info)
+    # print re.findall(phone, info)
     phonenum = len(re.findall(phone, info))
     if phonenum > 0:
         special['xxx-xxxx-xxxx'] = phonenum
@@ -70,6 +71,10 @@ def email_special_token(info):
     emailnum = len(re.findall(email, info))
     if emailnum > 0:
         special['xxx@xxx.xxx'] = emailnum
+
+    # length = len(info)
+    # if length > 4000:
+    #     special['email_length'] = 1
     return special
 
 
@@ -126,6 +131,38 @@ def data2vec(indexfile, max=-1):
     return vectors
 
 
-# vecs = data2vec('trec06c/full/index', 1000)
+def email_length(indexfile, max=-1):
+    f = file(indexfile, 'r')
+    lines = f.readlines()
+    lines = [line.strip().split(' ') for line in lines]
+    if max == -1:
+        max = len(lines)
+
+    vectors = [[], []]
+    cnt = 0
+    for line in lines:
+        positive = 1 if line[0].lower() == 'spam' else 0
+
+        path = os.path.join('trec06c/utf8/', '/'.join(line[1].split('/')[-2:]))
+        info = readEmail(path)
+        length = len(''.join(info[1]))
+        vectors[positive].append(length)
+
+        cnt += 1
+        print cnt
+        if cnt >= max:
+            break
+    return vectors
+
+
+vecs = data2vec('trec06c/full/index', 2)
 # print len(vecs[0]), len(vecs[1])
-email2dict('trec06c/utf8/010/130')
+# email2dict('trec06c/utf8/010/130')
+
+# lengthinfo = email_length('trec06c/full/index', 1000)
+# print lengthinfo
+
+# plt.hist(lengthinfo[0], alpha=0.7)
+# plt.xscale('symlog')
+# plt.yscale('symlog')
+# plt.show()
