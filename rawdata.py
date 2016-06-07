@@ -155,7 +155,39 @@ def email_length(indexfile, max=-1):
     return vectors
 
 
-vecs = data2vec('trec06c/full/index', 2)
+def email_priority(indexfile, max=-1):
+    f = file(indexfile, 'r')
+    lines = f.readlines()
+    lines = [line.strip().split(' ') for line in lines]
+    if max == -1:
+        max = len(lines)
+
+    vectors = [{}, {}]
+    cnt = 0
+    for line in lines:
+        positive = 1 if line[0].lower() == 'spam' else 0
+
+        path = os.path.join('trec06c/utf8/', '/'.join(line[1].split('/')[-2:]))
+        info = readEmail(path)
+        priority = 1
+
+        for line in info[0]:
+            if line.lower().startswith('x-priority'):
+                line = line.split(':')
+                priority = int(line[1].strip())
+                # print priority
+        if priority in vectors[positive]:
+            vectors[positive][priority] += 1
+        else:
+            vectors[positive][priority] = 1
+
+        cnt += 1
+        print cnt
+        if cnt >= max:
+            break
+    return vectors
+
+# vecs = data2vec('trec06c/full/index', 2)
 # print len(vecs[0]), len(vecs[1])
 # email2dict('trec06c/utf8/010/130')
 
@@ -166,3 +198,6 @@ vecs = data2vec('trec06c/full/index', 2)
 # plt.xscale('symlog')
 # plt.yscale('symlog')
 # plt.show()
+
+# priorityinfo = email_priority('trec06c/full/index', 5000)
+# print priorityinfo

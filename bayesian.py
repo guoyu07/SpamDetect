@@ -100,6 +100,9 @@ class BernoulliNB():
                 self.DocCnt[2] += 1
         self.Features = set(self.WordCnt.keys())
         self.Features = featureExtractor.extract_features(self)
+        for word in self.Features:
+            print word
+        print
 
     def PofC(self, positive):
         return 1.0 * self.DocCnt[positive] / self.DocCnt[2]

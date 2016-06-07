@@ -8,16 +8,16 @@ import time
 
 
 
-vecs = data2vec('trec06c/full/index', 1000)
+vecs = data2vec('trec06c/full/index', 5000)
 groups = randomSplit2(vecs[0]+vecs[1], 0.5)
 
 trainset = groups[0]
 testset = groups[1]
-FeaturenNum = 10
+FeaturenNum = 50
 
 
 classifier = BernoulliNB()
-classifier.train(trainset, SpecialExtractor(FeaturenNum))
+classifier.train(trainset, CombineExtractor(FeaturenNum))
 predicted = classifier.predict([sample[1] for sample in testset])
 expected = [sample[0] for sample in testset]
 showMetric(accuracyMetric(expected, predicted))
@@ -26,7 +26,7 @@ showMetric(accuracyMetric(expected, predicted))
 starttime = time.time()
 
 classifier = BernoulliNB()
-classifier.train(trainset, MutualInfo(FeaturenNum))
+classifier.train(trainset, InfomationGain(FeaturenNum))
 predicted = classifier.predict([sample[1] for sample in testset])
 expected = [sample[0] for sample in testset]
 showMetric(accuracyMetric(expected, predicted))
@@ -36,7 +36,7 @@ print middletime1 - starttime
 print
 
 classifier = BernoulliNB()
-classifier.train(trainset, MyExtractor(FeaturenNum))
+classifier.train(trainset, MutualInfo(FeaturenNum))
 predicted = classifier.predict([sample[1] for sample in testset])
 expected = [sample[0] for sample in testset]
 showMetric(accuracyMetric(expected, predicted))
@@ -47,7 +47,7 @@ print middletime2 - middletime1
 print
 
 classifier = BernoulliNB()
-classifier.train(trainset, CombineExtractor(FeaturenNum))
+classifier.train(trainset, MyExtractor(FeaturenNum))
 predicted = classifier.predict([sample[1] for sample in testset])
 expected = [sample[0] for sample in testset]
 showMetric(accuracyMetric(expected, predicted))

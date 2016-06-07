@@ -9,14 +9,13 @@ STOPWORDS = [u'按', u'按照', u'俺', u'俺们', u'阿', u'别', u'别人', u'
 def useless_word(word):
     if check_string(word) == 0:
         return True
-    if word in STOPWORDS:
-        # print word
-        return True
+    # if word in STOPWORDS:
+    #     # print word
+    #     return True
     return False
 
+
 # 0:u'中国★', 1:u'中国', 2:u'！。', 3:u'中国。'
-
-
 def check_string(string):
     if re.match(u'^[\u4e00-\u9fff]+$', string) != None:
         return 1
@@ -65,9 +64,9 @@ class MutualInfo(DefaultFeature):
         items = MI.items()
         items = sorted(items, lambda x, y: cmp(x[1], y[1]), reverse=True)
         ans = [item[0] for item in items[0:self.FeaturenNum]]
-        for word in ans:
-            print word
-        print
+        # for word in ans:
+        #     print word
+        # print
         return ans
 
 
@@ -141,13 +140,13 @@ class CombineExtractor(DefaultFeature):
 
     FeaturenNum = -1
     Extractors = []
-    ExNum = 2
+    ExNum = 3
 
     def __init__(self, num=-1):
         self.FeaturenNum = num
         self.Extractors.append(MutualInfo(self.ExNum * num))
         self.Extractors.append(MyExtractor(self.ExNum * num))
-        # self.Extractors.append(InfomationGain(self.ExNum * num))
+        self.Extractors.append(InfomationGain(self.ExNum * num))
         # self.Extractors.append(CrossEntropy(self.ExNum * num))
 
     def extract_features(self, NB):
@@ -156,15 +155,15 @@ class CombineExtractor(DefaultFeature):
         num = self.FeaturenNum
         Combine = {}
 
-        ratio = 1.0 * self.ExNum / (self.ExNum + 1)
+        ratio = 2.0 / self.ExNum / (self.ExNum * num)
         for extractor in self.Extractors:
             features = extractor.extract_features(NB)
             for i in range(self.ExNum * num):
                 word = features[i]
                 if word not in Combine:
-                    Combine[word] = 1.0 - ratio * i / 150
+                    Combine[word] = 1.0 - ratio * i
                 else:
-                    Combine[word] += 1.0 - ratio * i / 150
+                    Combine[word] += 1.0 - ratio * i
         # for word in Combine:
         #     print word, Combine[word]
         items = Combine.items()
@@ -194,9 +193,11 @@ class MyExtractor(DefaultFeature):
         items = MI.items()
         items = sorted(items, lambda x, y: cmp(x[1], y[1]), reverse=True)
         ans = [item[0] for item in items[0:self.FeaturenNum]]
-        for word in ans:
-            print word
-        print
+        # ans = [item[0] for item in items[0:self.FeaturenNum / 2]] \
+        #     + [item[0] for item in items[self.FeaturenNum / 2 - self.FeaturenNum:]]
+        # for word in ans:
+        #     print word
+        # print
         return ans
 
 
