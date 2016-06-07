@@ -59,8 +59,8 @@ def email_special_token(info):
     if urlnum > 0:
         special['http://'] = urlnum
 
-    phone = '\d{3}-\d{8}|\d{4}-\d{7}|0?1\d{10}\D'
-    # print re.findall(phone, info)
+    phone = '\d{3}-\d{8}|\d{4}-\d{7}|0?1\d{10}\D|\D\d{8}\D'
+    print re.findall(phone, info)
     phonenum = len(re.findall(phone, info))
     if phonenum > 0:
         special['xxx-xxxx-xxxx'] = phonenum
@@ -128,4 +128,4 @@ def data2vec(indexfile, max=-1):
 
 # vecs = data2vec('trec06c/full/index', 1000)
 # print len(vecs[0]), len(vecs[1])
-# email2dict('trec06c/utf8/000/007')
+email2dict('trec06c/utf8/010/130')
