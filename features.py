@@ -29,10 +29,10 @@ def check_string(string):
 # 无特征提取
 class DefaultFeature():
 
-    FeaturenNum = -1
+    FeatureNum = -1
 
     def __init__(self, num=-1):
-        self.FeaturenNum = num
+        self.FeatureNum = num
 
     def extract_features(self, NB):
         return NB.Features
@@ -41,13 +41,13 @@ class DefaultFeature():
 # 互信息
 class MutualInfo(DefaultFeature):
 
-    FeaturenNum = -1
+    FeatureNum = -1
 
     def __init__(self, num=-1):
-        self.FeaturenNum = num
+        self.FeatureNum = num
 
     def extract_features(self, NB):
-        if self.FeaturenNum == -1:
+        if self.FeatureNum == -1:
             return NB.Features
 
         MI = {}
@@ -63,7 +63,7 @@ class MutualInfo(DefaultFeature):
             MI[word] = p11 + p10 + p01 + p00
         items = MI.items()
         items = sorted(items, lambda x, y: cmp(x[1], y[1]), reverse=True)
-        ans = [item[0] for item in items[0:self.FeaturenNum]]
+        ans = [item[0] for item in items[0:self.FeatureNum]]
         # for word in ans:
         #     print word
         # print
@@ -73,13 +73,13 @@ class MutualInfo(DefaultFeature):
 # 期望交叉熵
 class CrossEntropy(DefaultFeature):
 
-    FeaturenNum = -1
+    FeatureNum = -1
 
     def __init__(self, num=-1):
-        self.FeaturenNum = num
+        self.FeatureNum = num
 
     def extract_features(self, NB):
-        if self.FeaturenNum == -1:
+        if self.FeatureNum == -1:
             return NB.Features
 
         CE = {}
@@ -91,7 +91,7 @@ class CrossEntropy(DefaultFeature):
             CE[word] = p1 + p0
         items = CE.items()
         items = sorted(items, lambda x, y: cmp(x[1], y[1]), reverse=True)
-        ans = [item[0] for item in items[0:self.FeaturenNum]]
+        ans = [item[0] for item in items[0:self.FeatureNum]]
         # for word in ans:
         #     print word
         # print
@@ -101,13 +101,13 @@ class CrossEntropy(DefaultFeature):
 # 信息增益
 class InfomationGain(DefaultFeature):
 
-    FeaturenNum = -1
+    FeatureNum = -1
 
     def __init__(self, num=-1):
-        self.FeaturenNum = num
+        self.FeatureNum = num
 
     def extract_features(self, NB):
-        if self.FeaturenNum == -1:
+        if self.FeatureNum == -1:
             return NB.Features
 
         IG = {}
@@ -129,7 +129,7 @@ class InfomationGain(DefaultFeature):
 
         items = IG.items()
         items = sorted(items, lambda x, y: cmp(x[1], y[1]), reverse=True)
-        ans = [item[0] for item in items[0:self.FeaturenNum]]
+        ans = [item[0] for item in items[0:self.FeatureNum]]
         # for word in ans:
         #     print word
         return ans
@@ -138,38 +138,43 @@ class InfomationGain(DefaultFeature):
 # 综合
 class CombineExtractor(DefaultFeature):
 
-    FeaturenNum = -1
+    FeatureNum = -1
     Extractors = []
     ExNum = 3
 
     def __init__(self, num=-1):
-        self.FeaturenNum = num
-        self.Extractors.append(MutualInfo(self.ExNum * num))
-        self.Extractors.append(MyExtractor(self.ExNum * num))
-        self.Extractors.append(InfomationGain(self.ExNum * num))
-        # self.Extractors.append(CrossEntropy(self.ExNum * num))
+        self.FeatureNum = num
+        self.Extractors = []
+        self.Extractors.append(MutualInfo(num))
+        self.Extractors.append(MyExtractor(num))
+        self.Extractors.append(InfomationGain(num))
+        # self.Extractors.append(CrossEntropy(num))
 
     def extract_features(self, NB):
-        if self.FeaturenNum == -1:
+        if self.FeatureNum == -1:
             return NB.Features
-        num = self.FeaturenNum
+        num = self.FeatureNum
         Combine = {}
 
         ratio = 1.0 / (self.ExNum * num + 1)
-        ratio = max(ratio, 1.0 / (self.ExNum * 50 + 1))
+        ratio = max(ratio, 1.0 / (50 + 1))
         for extractor in self.Extractors:
             features = extractor.extract_features(NB)
-            for i in range(self.ExNum * num):
+            # print self.Extractors
+            # print extractor.FeatureNum
+            # print len(NB.Features)
+            # print len(features)
+            for i in range(num):
                 word = features[i]
                 if word not in Combine:
-                    Combine[word] = 1.0 * self.ExNum - ratio * i
+                    Combine[word] = 1.0 - ratio * i
                 else:
-                    Combine[word] += 1.0 * self.ExNum - ratio * i
+                    Combine[word] += 1.0 - ratio * i
         # for word in Combine:
         #     print word, Combine[word]
         items = Combine.items()
         items = sorted(items, lambda x, y: cmp(x[1], y[1]), reverse=True)
-        ans = [item[0] for item in items[0:self.FeaturenNum]]
+        ans = [item[0] for item in items[0:self.FeatureNum]]
         # for word in ans:
         #     print word
         # print
@@ -179,13 +184,13 @@ class CombineExtractor(DefaultFeature):
 # 自定义
 class MyExtractor(DefaultFeature):
 
-    FeaturenNum = -1
+    FeatureNum = -1
 
     def __init__(self, num=-1):
-        self.FeaturenNum = num
+        self.FeatureNum = num
 
     def extract_features(self, NB):
-        if self.FeaturenNum == -1:
+        if self.FeatureNum == -1:
             return NB.Features
 
         MI = {}
@@ -193,9 +198,9 @@ class MyExtractor(DefaultFeature):
             MI[word] = abs(NB.PofTermC(word, 1) - NB.PofTermC(word, 0))
         items = MI.items()
         items = sorted(items, lambda x, y: cmp(x[1], y[1]), reverse=True)
-        ans = [item[0] for item in items[0:self.FeaturenNum]]
-        # ans = [item[0] for item in items[0:self.FeaturenNum / 2]] \
-        #     + [item[0] for item in items[self.FeaturenNum / 2 - self.FeaturenNum:]]
+        ans = [item[0] for item in items[0:self.FeatureNum]]
+        # ans = [item[0] for item in items[0:self.FeatureNum / 2]] \
+        #     + [item[0] for item in items[self.FeatureNum / 2 - self.FeatureNum:]]
         # for word in ans:
         #     print word
         # print
@@ -203,13 +208,13 @@ class MyExtractor(DefaultFeature):
 
 
 class SpecialExtractor(DefaultFeature):
-    FeaturenNum = -1
+    FeatureNum = -1
 
     def __init__(self, num=-1):
-        self.FeaturenNum = num
+        self.FeatureNum = num
 
     def extract_features(self, NB):
-        ans = ['http://', 'xxx-xxxx-xxxx', 'xxx@xxx.xxx', u'说']
+        ans = [ u'xxx-xxxx-xxxx',  u'联系人',  u'说',  u'您好',  u'发票',  u'觉得',  u'有限公司',  u'了',  u'就',  u'很',  u'深圳市',  u'广告',  u'公司',  u'没',  u'啊',  u'本',  u'服务',  u'不',  u'他',  u'那']
         MI = {}
         for word in ans:
             MI[word] = abs(NB.PofTermC(word, 1) - NB.PofTermC(word, 0))

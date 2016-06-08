@@ -8,16 +8,16 @@ import time
 from numpy import mean
 from math import sqrt
 
-vecs = data2vec('trec06c/full/index', 1000)
+vecs = data2vec('trec06c/full/index', 5000)
 groups = randomSplit2(vecs[0] + vecs[1], 0.5)
 trainset = groups[0]
 testset = groups[1]
-FeaturenNum = 50
+FeaturenNum = 40
 
 def initFeatures():
     classifier = BernoulliNB()
-    classifier.train(trainset, DefaultFeature(FeaturenNum))
-    return CombineExtractor(FeaturenNum).extract_features(classifier)
+    classifier.train(trainset, MutualInfo(FeaturenNum))
+    return classifier.Features
 
 
 def feature_vecs(Features, trainset):
@@ -60,30 +60,68 @@ def feature_matrix(vecs):
     return matrix
 
 
-def mean_distance(vecas, vecbs):
+def mean_distance(vecas, vecbs, matrix=None):
     sum = 0.0
     cnt = 0
     for a in vecas:
         for b in vecbs:
             cnt += 1
-            sum += distance(a, b)
+            if matrix:
+                sum += matrix[a[0]][b[0]]
+            else:
+                sum += distance(a, b)
     return sum / cnt
 
 
-def cluster():
-    pass
+def cluster(vecs, matrix=None):
+    mind = 2.0
+    minij = []
+    vecs = [[vec] for vec in vecs]
+    while mind == 2.0 or mind < 0.3:
+        if mind != 2.0:
+            vecs[minij[0]] = vecs[minij[0]] + vecs[minij[1]]
+            del vecs[minij[1]]
+            mind = 2.0
+        for i in range(len(vecs)):
+            for j in range(max(i+1,5), len(vecs)):
+                tmpd = mean_distance(vecs[i], vecs[j], matrix)
+                if tmpd < mind:
+                    mind = tmpd
+                    minij = [i, j]
+    return vecs
+
 
 features = initFeatures()
 featurevecs = feature_vecs(features, trainset)
 MATRIX = feature_matrix(featurevecs)
 
-max = -1.0
-min = 1.0
-for i in MATRIX:
-    for j in MATRIX[i]:
-        if MATRIX[i][j] > max:
-            max = MATRIX[i][j]
-        if MATRIX[i][j] < min:
-            min = MATRIX[i][j]
+# max = -1.0
+# min = 1.0
+# for i in MATRIX:
+#     for j in MATRIX[i]:
+#         if MATRIX[i][j] > max:
+#             max = MATRIX[i][j]
+#         if MATRIX[i][j] < min:
+#             min = MATRIX[i][j]
 
-print max, min
+# print max, min
+
+
+vecs = cluster(featurevecs, MATRIX)
+
+print len(vecs)
+for c in vecs:
+    print mean_distance(c, c, MATRIX),
+    for v in c:
+        print v[0],
+    print
+
+num = 20
+print '[',
+cnt = 0
+for c in vecs:
+    print "u'" + c[0][0] + "', ",
+    cnt += 1
+    if cnt == num:
+        break
+print ']'
