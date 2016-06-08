@@ -155,15 +155,16 @@ class CombineExtractor(DefaultFeature):
         num = self.FeaturenNum
         Combine = {}
 
-        ratio = 2.0 / self.ExNum / (self.ExNum * num)
+        ratio = 1.0 / (self.ExNum * num + 1)
+        ratio = max(ratio, 1.0 / (self.ExNum * 50 + 1))
         for extractor in self.Extractors:
             features = extractor.extract_features(NB)
             for i in range(self.ExNum * num):
                 word = features[i]
                 if word not in Combine:
-                    Combine[word] = 1.0 - ratio * i
+                    Combine[word] = 1.0 * self.ExNum - ratio * i
                 else:
-                    Combine[word] += 1.0 - ratio * i
+                    Combine[word] += 1.0 * self.ExNum - ratio * i
         # for word in Combine:
         #     print word, Combine[word]
         items = Combine.items()
