@@ -114,3 +114,6 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+
+resource/~$statistics.xlsx

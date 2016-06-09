@@ -53,28 +53,38 @@ def readEmail(filename):
 
 
 def email_special_token(info):
+    infostr = ''.join(info[1])
     special = {}
 
     url = '[a-zA-z]+://[\w\d/\.]*'
-    urlnum = len(re.findall(url, info))
+    urlnum = len(re.findall(url, infostr))
     if urlnum > 0:
         special['http://'] = urlnum
 
     phone = '\d{3}-\d{8}|\d{4}-\d{7}|0?1\d{10}\D|\D\d{8}\D'
     # print re.findall(phone, info)
-    phonenum = len(re.findall(phone, info))
+    phonenum = len(re.findall(phone, infostr))
     if phonenum > 0:
         special['xxx-xxxx-xxxx'] = phonenum
 
     email = '[\w-]*@[\w-]*.[\w-]*'
     # print re.findall(email, info)
-    emailnum = len(re.findall(email, info))
+    emailnum = len(re.findall(email, infostr))
     if emailnum > 0:
         special['xxx@xxx.xxx'] = emailnum
 
     # length = len(info)
     # if length > 4000:
     #     special['email_length'] = 1
+
+    priority = -1
+    for line in info[0]:
+        if line.lower().startswith('x-priority'):
+            line = line.split(':')
+            priority = int(line[1].strip())
+            # print priority
+    if priority != -1 and priority != 3:
+        special['priority3-1'] = 1
     return special
 
 
@@ -99,7 +109,7 @@ def email2dict(filename):
         else:
             wordcnt[word] = 1
 
-    specialToken = email_special_token(''.join(info[1]))
+    specialToken = email_special_token(info)
     for special in specialToken:
         wordcnt[special] = specialToken[special]
     return wordcnt
@@ -138,7 +148,8 @@ def email_length(indexfile, max=-1):
     if max == -1:
         max = len(lines)
 
-    vectors = [[], []]
+    per = ['<500', '500-1000', '1000-2000', '2000-3000', '3000-4000', '4000-5000', '>5000']
+    vectors = [{}.fromkeys(per, 0), {}.fromkeys(per, 0)]
     cnt = 0
     for line in lines:
         positive = 1 if line[0].lower() == 'spam' else 0
@@ -146,7 +157,20 @@ def email_length(indexfile, max=-1):
         path = os.path.join('trec06c/utf8/', '/'.join(line[1].split('/')[-2:]))
         info = readEmail(path)
         length = len(''.join(info[1]))
-        vectors[positive].append(length)
+        if length < 500:
+            vectors[positive]['<500'] += 1
+        elif length < 1000:
+            vectors[positive]['500-1000'] += 1
+        elif length < 2000:
+            vectors[positive]['1000-2000'] += 1
+        elif length < 3000:
+            vectors[positive]['2000-3000'] += 1
+        elif length < 4000:
+            vectors[positive]['3000-4000'] += 1
+        elif length < 5000:
+            vectors[positive]['4000-5000'] += 1
+        else:
+            vectors[positive]['>5000'] += 1
 
         cnt += 1
         print cnt
@@ -169,7 +193,7 @@ def email_priority(indexfile, max=-1):
 
         path = os.path.join('trec06c/utf8/', '/'.join(line[1].split('/')[-2:]))
         info = readEmail(path)
-        priority = 1
+        priority = -1
 
         for line in info[0]:
             if line.lower().startswith('x-priority'):
@@ -187,17 +211,17 @@ def email_priority(indexfile, max=-1):
             break
     return vectors
 
-# vecs = data2vec('trec06c/full/index', 2)
+# vecs = data2vec('trec06c/full/index', 5000)
 # print len(vecs[0]), len(vecs[1])
 # email2dict('trec06c/utf8/010/130')
 
-# lengthinfo = email_length('trec06c/full/index', 1000)
-# print lengthinfo
+lengthinfo = email_length('trec06c/full/index', 5000)
+print lengthinfo
 
-# plt.hist(lengthinfo[0], alpha=0.7)
+# plt.hist(lengthinfo[0])
 # plt.xscale('symlog')
 # plt.yscale('symlog')
 # plt.show()
 
-# priorityinfo = email_priority('trec06c/full/index', 5000)
+# priorityinfo = email_priority('trec06c/full/index', 7000)
 # print priorityinfo
