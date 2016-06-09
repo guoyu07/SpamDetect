@@ -214,7 +214,7 @@ class SpecialExtractor(DefaultFeature):
         self.FeatureNum = num
 
     def extract_features(self, NB):
-        ans = [ u'xxx-xxxx-xxxx',  u'说',  u'觉得',  u'联系人',  u'您好',  u'了',  u'发票',  u'很',  u'就',  u'有限公司',  u'没',  u'不',  u'优惠',  u'深圳市',  u'运输',  u'这个',  u'也',  u'他',  u'priority3-1',  u'所以']
+        ans = [ u'说',  u'了',  u'就',  u'不',  u'很',  u'xxx-xxxx-xxxx',  u'觉得',  u'联系人',  u'您好',  u'有限公司']
         MI = {}
         for word in ans:
             MI[word] = abs(NB.PofTermC(word, 1) - NB.PofTermC(word, 0))

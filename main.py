@@ -13,7 +13,7 @@ groups = randomSplit2(vecs[0]+vecs[1], 0.5)
 
 trainset = groups[0]
 testset = groups[1]
-featurenum = 20
+featurenum = 10
 
 
 classifier = BernoulliNB()

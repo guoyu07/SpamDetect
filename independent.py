@@ -12,11 +12,11 @@ vecs = data2vec('trec06c/full/index', 5000)
 groups = randomSplit2(vecs[0] + vecs[1], 0.5)
 trainset = groups[0]
 testset = groups[1]
-FeaturenNum = 40
+FeaturenNum = 20
 
 def initFeatures():
     classifier = BernoulliNB()
-    classifier.train(trainset, MutualInfo(FeaturenNum))
+    classifier.train(trainset, CombineExtractor(FeaturenNum))
     return classifier.Features
 
 
@@ -116,7 +116,7 @@ for c in vecs:
         print v[0],
     print
 
-num = 20
+num = 10
 print '[',
 cnt = 0
 for c in vecs:

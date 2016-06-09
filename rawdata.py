@@ -215,8 +215,8 @@ def email_priority(indexfile, max=-1):
 # print len(vecs[0]), len(vecs[1])
 # email2dict('trec06c/utf8/010/130')
 
-lengthinfo = email_length('trec06c/full/index', 5000)
-print lengthinfo
+# lengthinfo = email_length('trec06c/full/index', 5000)
+# print lengthinfo
 
 # plt.hist(lengthinfo[0])
 # plt.xscale('symlog')
